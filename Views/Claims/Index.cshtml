@@ -1,0 +1,85 @@
+﻿@model IEnumerable<ClaimsSystem.Models.Claim>
+
+@{
+    ViewData["Title"] = "Index";
+}
+//views index
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.User)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HoursWorked)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HourlyRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPayment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FileName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Notes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.User)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HoursWorked)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HourlyRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPayment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Notes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+                @if (ViewBag.Role.Equals("Coordinator") || ViewBag.Role.Equals("Manager"))
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ClaimId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ClaimId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ClaimId">Delete</a>
+                    </td>
+                }
+                else{
+                    <td>
+                        <a asp-action="Report" asp-route-id="@item.ClaimId">Report</a>
+                    </td>
+                }
+        </tr>
+}
+    </tbody>
+</table>
+<style>
+    body {
+        background-color: lightblue;
+    }
+
+</style>
