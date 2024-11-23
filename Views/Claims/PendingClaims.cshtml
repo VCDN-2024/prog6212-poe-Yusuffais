@@ -29,18 +29,30 @@
                 <td>@claim.HourlyRate</td>
                 <td>@claim.TotalPayment</td>
                 <td>@claim.Notes</td>
-                <td>
-                    <form asp-action="Approve" method="post" style="display:inline;">
-                        <input type="hidden" name="id" value="@claim.ClaimId" />
-                        <button type="submit" class="btn btn-success">Approve</button>
-                    </form>
-                </td>
-                <td>
-                    <form asp-action="Reject" method="post" style="display:inline;">
-                        <input type="hidden" name="id" value="@claim.ClaimId" />
-                        <button type="submit" class="btn btn-danger">Reject</button>
-                    </form>
-                </td>
+                @if (ViewBag.Role == "Manager")
+                {
+                    <td>
+                        <form asp-action="Approve" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="@claim.ClaimId" />
+                            <button type="submit" class="btn btn-success">Approve</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form asp-action="Reject" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="@claim.ClaimId" />
+                            <button type="submit" class="btn btn-danger">Reject</button>
+                        </form>
+                    </td>
+                }
+                else{
+                    <td>
+                        <form asp-action="AutomateClaimApproval" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="@claim.ClaimId" />
+                            <button type="submit" class="btn btn-success">Approve</button>
+                        </form>
+                    </td>
+                }
+                
             </tr>
         }
     </tbody>

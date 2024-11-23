@@ -519,3 +519,4 @@ C:\Users\Alwande Ngcobo\Downloads\ClaimsSystem\ClaimsSystem\obj\Debug\net8.0\ref
 C:\Users\Alwande Ngcobo\Downloads\ClaimsSystem\ClaimsSystem\obj\Debug\net8.0\ClaimsSystem.pdb
 C:\Users\Alwande Ngcobo\Downloads\ClaimsSystem\ClaimsSystem\obj\Debug\net8.0\ClaimsSystem.genruntimeconfig.cache
 C:\Users\Alwande Ngcobo\Downloads\ClaimsSystem\ClaimsSystem\obj\Debug\net8.0\ref\ClaimsSystem.dll
+C:\Users\Alwande Ngcobo\Downloads\ClaimsSystem\ClaimsSystem\obj\Debug\net8.0\ClaimsSystem.sourcelink.json

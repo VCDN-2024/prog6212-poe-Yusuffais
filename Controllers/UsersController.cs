@@ -88,13 +88,12 @@ namespace ClaimsSystem.Controllers
                     HttpContext.Session.SetString("user", user.ElementAt(0).Email);
                     HttpContext.Session.SetString("role", user.ElementAt(0).UserRole);
                     ViewBag.User = HttpContext.Session.GetString("user");
-                    var role = HttpContext.Session.GetString("role");
-                    ViewBag.Role = role;
-                    if (role.Equals("Lecturer"))
+                    ViewBag.Role = HttpContext.Session.GetString("role");
+                    if (HttpContext.Session.GetString("role").Equals("Lecturer"))
                     {
                         return RedirectToAction("Create", "Claims");
                     }
-                    else if (role.Equals("Coordinator") || role.Equals("Manager"))
+                    else if (HttpContext.Session.GetString("role").Equals("Coordinator") || HttpContext.Session.GetString("role").Equals("Manager"))
                     {
                         return RedirectToAction("PendingClaims", "Claims");
                     }
@@ -102,7 +101,7 @@ namespace ClaimsSystem.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ModelState.AddModelError("", "Incorrect login details\nInput correct details or register.");
+                    ModelState.AddModelError("", "Please enter correct details or register.");
                     return View();
                 }
 
